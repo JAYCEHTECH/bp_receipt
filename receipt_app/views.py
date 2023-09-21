@@ -15,14 +15,13 @@ def home(request):
     return render(request, "layouts/invoice-1.html")
 
 
-@api_view(['GET'])
 def receipt_generator(request, invoice_number, channel, account_no, account_name, description, amount):
     if not invoice_number or not channel or not account_no or not account_name or not description or not amount:
         return Response(data={'code': '0002', 'message': 'All parameters were not given'},
                         status=status.HTTP_400_BAD_REQUEST)
-    long_url = f'https://r.bestpaygh.com/receipt/{invoice_number}/{channel}/{account_no}/{account_name}/{description}/{amount}'
+    long_url = f'https://receipt-app-2a2vn.ondigitalocean.app/receipt/{invoice_number}/{channel}/{account_no}/{account_name}/{description}/{amount}'
     appender = secrets.token_hex(3)
-    short_url = f'https://r.bestpaygh.com/{appender}'
+    short_url = f'https://receipt-app-2a2vn.ondigitalocean.app/{appender}'
     if models.UrlData.objects.filter(invoice_number=invoice_number).exists():
         short_url = models.UrlData.objects.get(invoice_number=invoice_number).short_url
         return Response(data={'code': '0001', 'short_url': short_url, 'message': "Invoice number already exist"}, status=status.HTTP_409_CONFLICT)
