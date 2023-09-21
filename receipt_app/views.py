@@ -55,3 +55,5 @@ def show_receipt(request, invoice_number, channel, account_no, account_name, des
     except models.UrlData.DoesNotExist:
         return HttpResponse("Invalid Receipt")
 
+
+
