@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>Invoice - BestPay GH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <!-- External CSS libraries -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/fonts/font-awesome/css/font-awesome.min.css' %}">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" >
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900">
+
+    <!-- Custom Stylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+
+<!-- Invoice 1 start -->
+<div class="invoice-1 invoice-content">
+    <div class="container shadow">
+        <div>
+            <div>
+                <div class="invoice-inner clearfix">
+                    <div class="invoice-info clearfix" id="invoice_wrapper">
+                        <div class="invoice-headar">
+                            <div class="row g-0">
+                                <div class="col-6">
+                                    <div class="invoice-logo">
+                                        <!-- logo started -->
+                                        <div class="logo">
+                                            <h4>BestPay GH</h4>
+                                        </div>
+                                        <!-- logo ended -->
+                                    </div>
+                                </div>
+                                <div class="col-6 invoice-id">
+                                    <div class="info">
+                                        <p class="color-white mb-0 text-14">Invoice Number <span>#{{ invoice_no }}</span></p>
+                                        <p class="color-white mb-0 text-14">Invoice Date <span>{{ date}}</span></p>
+                                        <p class="color-white mb-0 text-14">Channel <span>{{ channel}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-top">
+                            <div class="row">
+                                <div class="">
+                                    <div class="mb-30 payment-method">
+                                        <h3 class="inv-title-1">Invoice Details</h3>
+                                        <ul class="payment-method-list-1 text-14">
+                                            <li><strong>Account No:</strong> {{ account_no}}</li>
+                                            <li><strong>Account Name:</strong> {{ name }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-center">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-striped invoice-table">
+                                    <thead class="bg-active">
+                                    <tr>
+                                        <th class="text-start text-14-h">Quantity</th>
+                                        <th class="text-start text-14-h">Description</th>
+                                        <th class="text-start text-14-h">Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-start text-14">x1</td>
+                                        <td class="text-start text-14">{{ desc }}</td>
+                                        <td class="text-start text-14">₵{{ amount }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="invoice-bottom">
+                            <div class="row justify-content-end">
+                                <div class="col-6 justify-content-end ml-auto">
+                                    <p style="font-size: 16px">Subtotal: ₵{{ amount }}</p>
+                                    <p style="font-size: 16px" class="fw-bold">Total: ₵{{ amount }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-contact clearfix">
+{#                            <div class="row g-0">#}
+{#                                <div class="col-lg-9 col-md-11 col-sm-12">#}
+{#                                    <div class="contact-info">#}
+{#                                        <a href="tel:+55-4XX-634-7071"><i class="fa fa-phone"></i> +00 123 647 840</a>#}
+{#                                        <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i> info@themevessel.com</a>#}
+{#                                        <a href="tel:info@themevessel.com" class="mr-0 d-none-580"><i class="fa fa-map-marker"></i> 169 Teroghoria, Bangladesh</a>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+                    </div>
+                    <div class="invoice-btn-section clearfix d-print-none">
+                        <a href="javascript:window.print()" class="btn btn-lg btn-print mb-3">
+                            <i class="fa fa-print"></i> Print Invoice
+                        </a>
+                        <a id="invoice_download_btn" class="btn btn-lg btn-download btn-theme mb-3">
+                            <i class="fa fa-download"></i> Download Invoice
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Invoice 1 end -->
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jspdf.min.js' %}"></script>
+<script src="{% static 'assets/js/html2canvas.js' %}"></script>
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>
