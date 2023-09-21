@@ -15,6 +15,7 @@ def home(request):
     return render(request, "layouts/invoice-1.html")
 
 
+@api_view(['GET'])
 def receipt_generator(request, invoice_number, channel, account_no, account_name, description, amount):
     if not invoice_number or not channel or not account_no or not account_name or not description or not amount:
         return Response(data={'code': '0002', 'message': 'All parameters were not given'},
