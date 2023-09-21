@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-z3cxkh+y!h84v0g_68s#9ld5@zm0ema#uk&7a_nl6d=m0z&8=)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'receipt-app-2a2vn.ondigitalocean.app',
+    'r.bestpaygh.com'
+]
 
 
 # Application definition
