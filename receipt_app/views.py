@@ -16,13 +16,13 @@ def home(request):
 
 
 @api_view(['GET'])
-def receipt_generator(request, invoice_number, channel, account_no, account_name, description, amount):
+def receipt_generator(request, invoice_number, channel, account_no, account_name, description, amount, date):
     if not invoice_number or not channel or not account_no or not account_name or not description or not amount:
         return Response(data={'code': '0002', 'message': 'All parameters were not given'},
                         status=status.HTTP_400_BAD_REQUEST)
-    long_url = f'https://receipt-app-2a2vn.ondigitalocean.app/receipt/{invoice_number}/{channel}/{account_no}/{account_name}/{description}/{amount}'
+    long_url = f'https://r.bestpaygh.com/receipt/{invoice_number}/{channel}/{account_no}/{account_name}/{description}/{amount}/{date}'
     appender = secrets.token_hex(3)
-    short_url = f'https://receipt-app-2a2vn.ondigitalocean.app/{appender}'
+    short_url = f'https://r.bestpaygh.com/{appender}'
     if models.UrlData.objects.filter(invoice_number=invoice_number).exists():
         short_url = models.UrlData.objects.get(invoice_number=invoice_number).short_url
         return Response(data={'code': '0001', 'short_url': short_url, 'message': "Invoice number already exist"}, status=status.HTTP_409_CONFLICT)
@@ -36,7 +36,7 @@ def url_redirect(request, url_id):
     return redirect(data.url)
 
 
-def show_receipt(request, invoice_number, channel, account_no, account_name, description, amount):
+def show_receipt(request, invoice_number, channel, account_no, account_name, description, amount, date):
     try:
         short_url = models.UrlData.objects.filter(invoice_number=invoice_number)
         if short_url.exists():
@@ -47,7 +47,7 @@ def show_receipt(request, invoice_number, channel, account_no, account_name, des
                 'name': account_name,
                 'desc': description,
                 'amount': amount,
-                'date': datetime.now().strftime('%Y-%m-%d')
+                'date': date
             }
             return render(request, "layouts/invoice-1.html", context=context)
         else:
