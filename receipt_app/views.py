@@ -32,8 +32,11 @@ def receipt_generator(request, invoice_number, channel, account_no, account_name
 
 
 def url_redirect(request, url_id):
-    data = models.UrlData.objects.get(url_id=url_id)
-    return redirect(data.url)
+    try:
+        data = models.UrlData.objects.get(url_id=url_id)
+        return redirect(data.url)
+    except:
+        return HttpResponse("Invalid receipt")
 
 
 def show_receipt(request, invoice_number, channel, account_no, account_name, description, amount, date):
