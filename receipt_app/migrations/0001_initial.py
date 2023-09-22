@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('url', models.CharField(max_length=200, null=True)),
                 ('url_id', models.CharField(blank=True, max_length=10, null=True)),
                 ('invoice_number', models.CharField(blank=True, max_length=100, null=True)),
+                ('short_url', models.CharField(blank=True, max_length=100, null=True)),
             ],
         ),
     ]
