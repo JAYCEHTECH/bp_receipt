@@ -30,7 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'receipt-app-2a2vn.ondigitalocean.app',
-    'r.bestpaygh.com'
+    'r.bestpaygh.com',
+    '127.0.0.1'
 ]
 
 
